@@ -1,0 +1,25 @@
+header {
+  font-size: 1.3em;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.person {
+  border: 0px solid red;
+}
+
+img {
+  width: 20%;
+  border: 2px solid blue;
+}
+
+.person:nth-child(odd) {
+  background-color: #FFF9A0;
+}
+
+.person:nth-child(even) {
+  background-color: #8BF6F2
+}
