@@ -31,10 +31,29 @@ peeps.forEach(function (p) {
                             <header>${p.name}, ${p.title}</header>
                             <section>
                               <img src='${p.image}'>
-                              <p>${p.bio}</p>
+                              <p id="bio">${p.bio}</p>
                             </section>
                             <footer>
                               <p>${p.lifespan.birth}-${p.lifespan.death}</p>
                             </footer>
                           </div>`;
 });
+
+var personRef = document.getElementsByClassName("person");
+
+for (i = 0; i < personRef.length; i++) {
+  personRef[i].addEventListener("click",caughtClick);
+};
+
+textInput.addEventListener("keypress",caughtLetter);
+
+function caughtClick(e) {
+  e.target.classList.toggle("border");
+  textInput.focus();
+}
+
+function caughtLetter(e) {
+  console.log(String.fromCharCode(e.keyCode));
+  // how to bind bio in this section, and only this section,
+  // to what's being typed in textInput?
+}
