@@ -1,6 +1,4 @@
-
-var container = document.getElementById("container");
-
+var q;
 var peeps = [
 {
   title: "Spy",
@@ -24,36 +22,51 @@ var peeps = [
   lifespan: { birth: 1915, death: 1963 }
 }];
 
-///////////////
+var container = document.getElementById("container");
 
+// MAIN: EXECUTE ON PAGE LOAD
 peeps.forEach(function (p) {
   container.innerHTML += `<div class="person">
-                            <header>${p.name}, ${p.title}</header>
+                            <header>
+                              ${p.name}, ${p.title}
+                            </header>
                             <section>
                               <img src='${p.image}'>
-                              <p id="bio">${p.bio}</p>
+                              <p class="bio">${p.bio}</p>
                             </section>
                             <footer>
-                              <p>${p.lifespan.birth}-${p.lifespan.death}</p>
+                              ${p.lifespan.birth}-${p.lifespan.death}
                             </footer>
                           </div>`;
 });
 
-var personRef = document.getElementsByClassName("person");
+var personRef = document.getElementsByClassName("person"); // person class must exist
+personRef[0].classList.add("selected"); // initialize first person as selected
+var selectedPerson = document.getElementsByClassName("selected"); // should only be one
 
+// add event listener to each "person" element
 for (i = 0; i < personRef.length; i++) {
   personRef[i].addEventListener("click",caughtClick);
 };
 
-textInput.addEventListener("keypress",caughtLetter);
+// add event listener to text input
+textInput.addEventListener("input",caughtLetter);
+
+
+/////////////////////////////
 
 function caughtClick(e) {
-  e.target.classList.toggle("border");
+  // how to yank "selected" from classList of last person clicked?
+  selectedPerson[0].classList.remove("border"); // remove "border" from old selectedPerson
+  selectedPerson[0].classList.remove("selected"); // remove "selected" from old selectedPerson, note that after you do this, selectedPerson ref will be empty
+  e.target.parentNode.classList.add("selected");
+  e.target.parentNode.classList.add("border");
+  q = document.querySelector(".selected p[class='bio']");
+  textInput.value = q.innerHTML;
   textInput.focus();
 }
 
 function caughtLetter(e) {
-  console.log(String.fromCharCode(e.keyCode));
-  // how to bind bio in this section, and only this section,
-  // to what's being typed in textInput?
+  // console.log(String.fromCharCode(e.keyCode));
+  q.innerHTML = textInput.value;
 }
