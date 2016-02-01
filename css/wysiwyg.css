@@ -20,17 +20,19 @@ p {
 
 img {
   width: 20%;
-  box-shadow: 6px 8px 21px 0px rgba(0,0,0,0.75);}
+  box-shadow: 6px 8px 21px 0px rgba(0,0,0,0.75);
+}
 
 .person:nth-child(odd) {
   background-color: #FFF9A0;
 }
 
 .person:nth-child(even) {
-  background-color: #8BF6F2
+  background-color: #8BF6F2;
 }
 
 .border {
+  padding: 5px;
   border: 4px dotted red;
 }
 

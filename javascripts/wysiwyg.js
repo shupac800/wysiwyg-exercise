@@ -68,7 +68,7 @@ function caughtClick(e) {
 function caughtLetter(e) {
   var t = e.target.value
   t = t.substr(t.length-1); // ASCIIvalue of last character in string
-  if (t.charCodeAt(0) == 10) {
+  if (t.charCodeAt(0) == 10) { // ASCII 10 is line feed
     textInput.value = "";
   }
   q.innerHTML = e.target.value;
