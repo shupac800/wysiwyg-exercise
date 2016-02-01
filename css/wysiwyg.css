@@ -15,12 +15,12 @@ p {
 }
 
 .person {
-  padding: 5px 0;
+  padding: 9px;
 }
 
 img {
   width: 20%;
-}
+  box-shadow: 6px 8px 21px 0px rgba(0,0,0,0.75);}
 
 .person:nth-child(odd) {
   background-color: #FFF9A0;
@@ -33,3 +33,4 @@ img {
 .border {
   border: 4px dotted red;
 }
+

@@ -50,13 +50,12 @@ for (i = 0; i < personRef.length; i++) {
 };
 
 // add event listener to text input
-textInput.addEventListener("input",caughtLetter);
+textInput.addEventListener("keyup",caughtLetter); // is "input" what you want??
 
 
 /////////////////////////////
 
 function caughtClick(e) {
-  // how to yank "selected" from classList of last person clicked?
   selectedPerson[0].classList.remove("border"); // remove "border" from old selectedPerson
   selectedPerson[0].classList.remove("selected"); // remove "selected" from old selectedPerson, note that after you do this, selectedPerson ref will be empty
   e.target.parentNode.classList.add("selected");
@@ -67,6 +66,10 @@ function caughtClick(e) {
 }
 
 function caughtLetter(e) {
-  // console.log(String.fromCharCode(e.keyCode));
-  q.innerHTML = textInput.value;
+  var t = e.target.value
+  t = t.substr(t.length-1); // ASCIIvalue of last character in string
+  if (t.charCodeAt(0) == 10) {
+    textInput.value = "";
+  }
+  q.innerHTML = e.target.value;
 }
